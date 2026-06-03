@@ -15,7 +15,7 @@ const Newsletter = () => {
   }
 
   return (
-    <Box sx={{ backgroundColor: "#336699"}}>
+    <Box sx={{ backgroundColor: "#d32f2f", borderTop: "1px solid rgba(255,255,255,0.1)" }}>
       <Grid
         sx={{
           display: "flex",

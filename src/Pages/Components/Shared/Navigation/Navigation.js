@@ -62,12 +62,24 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
+const navLinks = [
+  { label: "Home", href: "/#home" },
+  { label: "About", href: "/#about" },
+  { label: "Features", href: "/#features" },
+  { label: "Products", href: "/#products" },
+  { label: "Testimonial", href: "/#testimonial" },
+  { label: "Faq", href: "/#faq" },
+  { label: "Contact", href: "/#contact" }
+];
+
 export default function Navigation() {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
+  const [mobileNavAnchorEl, setMobileNavAnchorEl] = React.useState(null);
 
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
+  const isMobileNavOpen = Boolean(mobileNavAnchorEl);
 
   const handleProfileMenuOpen = (event) => {
     setAnchorEl(event.currentTarget);
@@ -77,6 +89,10 @@ export default function Navigation() {
     setMobileMoreAnchorEl(null);
   };
 
+  const handleMobileNavClose = () => {
+    setMobileNavAnchorEl(null);
+  };
+
   const handleMenuClose = () => {
     setAnchorEl(null);
     handleMobileMenuClose();
@@ -84,6 +100,10 @@ export default function Navigation() {
 
   const handleMobileMenuOpen = (event) => {
     setMobileMoreAnchorEl(event.currentTarget);
+  };
+
+  const handleMobileNavOpen = (event) => {
+    setMobileNavAnchorEl(event.currentTarget);
   };
 
   const {user, logOut} = useContext(AuthContext);
@@ -177,6 +197,32 @@ export default function Navigation() {
     </Menu>
   );
 
+  const renderMobileNavMenu = (
+    <Menu
+      anchorEl={mobileNavAnchorEl}
+      anchorOrigin={{
+        vertical: "top",
+        horizontal: "left",
+      }}
+      id="mobile-nav-menu"
+      keepMounted
+      transformOrigin={{
+        vertical: "top",
+        horizontal: "left",
+      }}
+      open={isMobileNavOpen}
+      onClose={handleMobileNavClose}
+    >
+      {navLinks.map((item) => (
+        <MenuItem key={item.label} onClick={handleMobileNavClose}>
+          <Link href={item.href} sx={{ color: "black", textDecoration: "none", width: "100%" }}>
+            {item.label}
+          </Link>
+        </MenuItem>
+      ))}
+    </Menu>
+  );
+
   const location = useLocation();
   if (location?.pathname?.includes("dashboard") || location?.pathname?.includes("login") || location?.pathname?.includes("register")) {
     return null;
@@ -184,94 +230,121 @@ export default function Navigation() {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar sx={{ backgroundColor: "#336699", position:"fixed", top: 0, width: "100%" }}>
-        <Toolbar>
-          <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="open drawer"
-            sx={{ mr: 1, display: { xs: "flex", md: "none" } }}
-          >
-            <MenuIcon />
-          </IconButton>
-          <NavLink to="/" style={{ textDecoration: "none" }}>
-            <Typography
-              variant="h6"
-              noWrap
-              component="div"
-              sx={{
-                display: { xs: "none", md: "flex" },
-                fontFamily: "monospace",
-                fontWeight: 700,
-                letterSpacing: ".3rem",
-                color: "inherit",
-                textDecoration: "none",
-                marginRight: "70px"
-              }}
-            >
-              <img style={{ width: "150px" }} src={logo} alt="" />
-            </Typography>
-          </NavLink>
-          <Search>
-            <SearchIconWrapper>
-              <SearchIcon />
-            </SearchIconWrapper>
-            <StyledInputBase
-              // sx={{maxWidth: "650px"}}
-              placeholder="Search in Matricolive"
-              inputProps={{ "aria-label": "search" }}
-            />
-          </Search>
-          <Box sx={{ flexGrow: 1 }} />
-          <Box sx={{ display: { xs: "none", md: "flex" } }}>
+      <AppBar sx={{ backgroundColor: "#d32f2f", position:"fixed", top: 0, width: "100%", zIndex: 1200 }}>
+        <Toolbar sx={{ justifyContent: "space-between" }}>
+          <Box sx={{ display: "flex", alignItems: "center" }}>
             <IconButton
               size="large"
-              aria-label="show 0 new notifications"
+              edge="start"
               color="inherit"
+              aria-label="open drawer"
+              onClick={handleMobileNavOpen}
+              sx={{ mr: 1, display: { xs: "flex", md: "none" } }}
             >
-              <Badge badgeContent={0} color="error">
-                <NotificationsIcon />
-              </Badge>
+              <MenuIcon />
             </IconButton>
-            <Link href="/cart" style={{ textDecoration: "none", color: "white" }}>
+            <NavLink to="/" style={{ textDecoration: "none" }}>
+              <Typography
+                variant="h6"
+                noWrap
+                component="div"
+                sx={{
+                  display: "flex",
+                  fontFamily: "monospace",
+                  fontWeight: 700,
+                  letterSpacing: ".3rem",
+                  color: "inherit",
+                  textDecoration: "none",
+                  alignItems: "center"
+                }}
+              >
+                <img style={{ width: "130px", height: "auto", display: "block" }} src={logo} alt="Matricolive" />
+              </Typography>
+            </NavLink>
+          </Box>
+
+          {/* Desktop Navigation Links */}
+          <Box sx={{ display: { xs: "none", md: "flex" }, gap: "25px", alignItems: "center" }}>
+            {navLinks.map((item) => (
+              <Link
+                key={item.label}
+                href={item.href}
+                sx={{
+                  color: "white",
+                  textDecoration: "none",
+                  fontWeight: 500,
+                  fontSize: "0.95rem",
+                  transition: "color 0.2s",
+                  "&:hover": { color: "#ffcdd2" }
+                }}
+              >
+                {item.label}
+              </Link>
+            ))}
+          </Box>
+
+          <Box sx={{ display: "flex", alignItems: "center" }}>
+            <Search sx={{ display: { xs: "none", sm: "block" }, mr: 2 }}>
+              <SearchIconWrapper>
+                <SearchIcon />
+              </SearchIconWrapper>
+              <StyledInputBase
+                placeholder="Search in Matricolive"
+                inputProps={{ "aria-label": "search" }}
+              />
+            </Search>
+            
+            <Box sx={{ display: { xs: "none", md: "flex" } }}>
               <IconButton
                 size="large"
-                aria-label="show 0 new cart"
+                aria-label="show 0 new notifications"
                 color="inherit"
               >
                 <Badge badgeContent={0} color="error">
-                  <ShoppingCartIcon />
+                  <NotificationsIcon />
                 </Badge>
               </IconButton>
-            </Link>
-            <IconButton
-              size="large"
-              edge="end"
-              aria-label="account of current user"
-              aria-controls={menuId}
-              aria-haspopup="true"
-              onClick={handleProfileMenuOpen}
-              color="inherit"
-            >
-              <AccountCircle />
-            </IconButton>
-          </Box>
-          <Box sx={{ display: { xs: "flex", md: "none" } }}>
-            <IconButton
-              size="large"
-              aria-label="show more"
-              aria-controls={mobileMenuId}
-              aria-haspopup="true"
-              onClick={handleMobileMenuOpen}
-              color="inherit"
-            >
-              <MoreIcon />
-            </IconButton>
+              <Link href="/cart" style={{ textDecoration: "none", color: "white" }}>
+                <IconButton
+                  size="large"
+                  aria-label="show 0 new cart"
+                  color="inherit"
+                >
+                  <Badge badgeContent={0} color="error">
+                    <ShoppingCartIcon />
+                  </Badge>
+                </IconButton>
+              </Link>
+              <IconButton
+                size="large"
+                edge="end"
+                aria-label="account of current user"
+                aria-controls={menuId}
+                aria-haspopup="true"
+                onClick={handleProfileMenuOpen}
+                color="inherit"
+              >
+                <AccountCircle />
+              </IconButton>
+            </Box>
+            
+            <Box sx={{ display: { xs: "flex", md: "none" } }}>
+              <IconButton
+                size="large"
+                aria-label="show more"
+                aria-controls={mobileMenuId}
+                aria-haspopup="true"
+                onClick={handleMobileMenuOpen}
+                color="inherit"
+              >
+                <MoreIcon />
+              </IconButton>
+            </Box>
           </Box>
         </Toolbar>
       </AppBar>
       {renderMobileMenu}
+      {renderMobileNavMenu}
       {renderMenu}
     </Box>
   );

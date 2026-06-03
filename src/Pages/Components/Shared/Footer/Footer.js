@@ -21,10 +21,9 @@ const Footer = () => {
       <Box
         className="footer"
         sx={{
-          backgroundColor: "#0D0D0D",
-          border: "1px solid black",
+          backgroundColor: "#d32f2f",
           overflow: "hidden",
-          color: "inherit",
+          color: "#fff",
         }}
       >
         <Container maxWidth="lg">
@@ -100,7 +99,7 @@ const Footer = () => {
                   variant="contained"
                   href="/about"
                   sx={{
-                    background: "#336699 !important",
+                    background: "#333333 !important",
                     borderRadius: "0 !important",
                     py: 1,
                     px: 3,
