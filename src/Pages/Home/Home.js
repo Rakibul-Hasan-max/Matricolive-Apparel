@@ -179,54 +179,39 @@ export default function Home() {
           alignItems: "center",
           position: "relative",
           zIndex: 1,
-          pt: { xs: 8, md: 12 },
+          pt: { xs: 12, md: 16 },
           pb: { xs: 15, md: 20 }
         }}
       >
         <Container maxWidth="lg">
-          <Grid container spacing={4} alignItems="center">
+          <Grid container spacing={6} alignItems="center">
             <Grid item xs={12} md={6} sx={{ textAlign: { xs: "center", md: "left" } }}>
-              <Box
-                sx={{
-                  display: "inline-block",
-                  backgroundColor: "rgba(255, 255, 255, 0.2)",
-                  color: "#ffffff",
-                  px: 2,
-                  py: 0.5,
-                  borderRadius: "20px",
-                  fontSize: "0.85rem",
-                  fontWeight: 600,
-                  mb: 3,
-                  textTransform: "uppercase",
-                  letterSpacing: "1px"
-                }}
-              >
-                Awesome Design & Quality
-              </Box>
               <Typography
                 variant="h2"
                 component="h1"
                 sx={{
                   fontWeight: 800,
                   color: "#ffffff",
-                  lineHeight: 1.2,
-                  fontSize: { xs: "2.8rem", md: "3.8rem" },
-                  mb: 3
+                  lineHeight: 1.15,
+                  fontSize: { xs: "2.8rem", md: "4.2rem" },
+                  mb: 3,
+                  textShadow: "0 2px 4px rgba(0,0,0,0.1)"
                 }}
               >
-                Present your awesome product
+                Next-Gen Active Pro Smartwatch
               </Typography>
               <Typography
                 variant="body1"
                 sx={{
-                  color: "rgba(255, 255, 255, 0.9)",
-                  fontSize: "1.1rem",
+                  color: "rgba(255, 255, 255, 0.95)",
+                  fontSize: "1.15rem",
+                  lineHeight: 1.6,
                   mb: 4,
-                  maxWidth: "500px",
+                  maxWidth: "520px",
                   mx: { xs: "auto", md: 0 }
                 }}
               >
-                Discover the ultimate smartwatch that matches your style and fulfills your daily connectivity needs with maximum precision and elegance.
+                Experience absolute freedom with built-in cellular connectivity, advanced 24/7 biometric health tracking, and a stunning titanium design. Engineered to power your active lifestyle.
               </Typography>
               <Button
                 variant="contained"
@@ -234,21 +219,21 @@ export default function Home() {
                 sx={{
                   backgroundColor: "#ffffff",
                   color: "#d32f2f",
-                  fontWeight: "bold",
-                  fontSize: "1rem",
-                  px: 4,
-                  py: 1.5,
+                  fontWeight: 800,
+                  fontSize: "1.05rem",
+                  px: 5,
+                  py: 1.8,
                   borderRadius: "30px",
-                  boxShadow: "0 10px 20px rgba(0,0,0,0.15)",
+                  boxShadow: "0 10px 25px rgba(0,0,0,0.2)",
                   "&:hover": {
                     backgroundColor: "#f5f5f5",
-                    transform: "translateY(-2px)",
-                    boxShadow: "0 12px 22px rgba(0,0,0,0.2)"
+                    transform: "translateY(-3px)",
+                    boxShadow: "0 15px 30px rgba(0,0,0,0.25)"
                   },
                   transition: "all 0.3s"
                 }}
               >
-                BUY WATCH
+                BUY ACTIVE PRO
               </Button>
             </Grid>
             <Grid item xs={12} md={6} sx={{ display: "flex", justifyContent: "center" }}>
@@ -259,8 +244,8 @@ export default function Home() {
                 sx={{
                   maxWidth: "100%",
                   height: "auto",
-                  width: { xs: "280px", md: "400px" },
-                  filter: "drop-shadow(0px 20px 30px rgba(0,0,0,0.25))",
+                  width: { xs: "280px", md: "420px" },
+                  filter: "drop-shadow(0px 25px 35px rgba(0,0,0,0.3))",
                   animation: "float 6s ease-in-out infinite",
                   "@keyframes float": {
                     "0%": { transform: "translateY(0px)" },
@@ -307,8 +292,8 @@ export default function Home() {
                   backgroundColor: "rgba(211, 47, 47, 0.1)",
                   color: "#d32f2f",
                   px: 2,
-                  py: 0.5,
-                  borderRadius: "20px",
+                  py: 1,
+                  borderRadius: "10px",
                   fontSize: "0.8rem",
                   fontWeight: 600,
                   mb: 2,
@@ -357,8 +342,8 @@ export default function Home() {
                 backgroundColor: "rgba(211, 47, 47, 0.1)",
                 color: "#d32f2f",
                 px: 2,
-                py: 0.5,
-                borderRadius: "20px",
+                py: 1,
+                borderRadius: "10px",
                 fontSize: "0.8rem",
                 fontWeight: 600,
                 mb: 2,
@@ -427,8 +412,8 @@ export default function Home() {
                 backgroundColor: "rgba(211, 47, 47, 0.1)",
                 color: "#d32f2f",
                 px: 2,
-                py: 0.5,
-                borderRadius: "20px",
+                py: 1,
+                borderRadius: "10px",
                 fontSize: "0.8rem",
                 fontWeight: 600,
                 mb: 2,
@@ -515,8 +500,8 @@ export default function Home() {
                 backgroundColor: "rgba(255, 255, 255, 0.2)",
                 color: "#ffffff",
                 px: 2,
-                py: 0.5,
-                borderRadius: "20px",
+                py: 1,
+                borderRadius: "10px",
                 fontSize: "0.8rem",
                 fontWeight: 600,
                 mb: 2,
@@ -645,8 +630,8 @@ export default function Home() {
                 backgroundColor: "rgba(211, 47, 47, 0.1)",
                 color: "#d32f2f",
                 px: 2,
-                py: 0.5,
-                borderRadius: "20px",
+                py: 1,
+                borderRadius: "10px",
                 fontSize: "0.8rem",
                 fontWeight: 600,
                 mb: 2,
@@ -719,8 +704,8 @@ export default function Home() {
                 backgroundColor: "rgba(211, 47, 47, 0.1)",
                 color: "#d32f2f",
                 px: 2,
-                py: 0.5,
-                borderRadius: "20px",
+                py: 1,
+                borderRadius: "10px",
                 fontSize: "0.8rem",
                 fontWeight: 600,
                 mb: 2,
@@ -799,7 +784,7 @@ export default function Home() {
                   >
                     <LocationOnIcon />
                   </Box>
-                  <Box>
+                  <Box sx={{ textAlign: "left" }}>
                     <Typography variant="subtitle1" sx={{ fontWeight: 700, color: "#222222" }}>
                       Office Address
                     </Typography>
@@ -824,7 +809,7 @@ export default function Home() {
                   >
                     <MailIcon />
                   </Box>
-                  <Box>
+                  <Box sx={{ textAlign: "left" }}>
                     <Typography variant="subtitle1" sx={{ fontWeight: 700, color: "#222222" }}>
                       Email Support
                     </Typography>
@@ -849,7 +834,7 @@ export default function Home() {
                   >
                     <PhoneIcon />
                   </Box>
-                  <Box>
+                  <Box sx={{ textAlign: "left" }}>
                     <Typography variant="subtitle1" sx={{ fontWeight: 700, color: "#222222" }}>
                       Call Helpline
                     </Typography>
