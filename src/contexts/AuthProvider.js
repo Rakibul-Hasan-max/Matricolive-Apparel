@@ -3,34 +3,42 @@ import { createContext, useEffect, useState } from 'react';
 import { app } from '../firebase/firebase.config';
 
 export const AuthContext = createContext(null);
-const auth = getAuth(app);
+const auth = app ? getAuth(app) : null;
 
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
 
     const createUser = (email, password) => {
+        if (!auth) return Promise.reject(new Error("Firebase auth not initialized"));
         setLoading (true);
         return createUserWithEmailAndPassword(auth, email, password);
     }
 
     const signIn = (email, password) => {
+        if (!auth) return Promise.reject(new Error("Firebase auth not initialized"));
         setLoading (true);
         return signInWithEmailAndPassword(auth, email, password);
     }
 
     const logOut = () => {
+        if (!auth) return Promise.reject(new Error("Firebase auth not initialized"));
         setLoading (true);
         return signOut(auth);
     }
 
     const updateUserProfile = (name) => {
+        if (!auth?.currentUser) return Promise.reject(new Error("Firebase auth not initialized or user not logged in"));
         return updateProfile(auth.currentUser, {
             displayName: name
         });
     }
 
     useEffect( () => {
+        if (!auth) {
+            setLoading(false);
+            return;
+        }
         const unsubscribe = onAuthStateChanged(auth, currentUser => {
             setUser(currentUser);
             console.log("current user", currentUser);
