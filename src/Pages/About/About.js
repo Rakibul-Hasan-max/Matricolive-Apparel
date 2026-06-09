@@ -61,7 +61,7 @@ const About = () => {
               to serve you. "Greenleaf Planner" is one of them. The company
               provides any kind of event management work. It also provides
               interior design and development services. Our other partner
-              company is Devcalltech. It provides all kinds of tech-related
+              company is Epciln. It provides all kinds of tech-related
               services. You can get any kind of tech support here.
             </Typography>
             <Typography

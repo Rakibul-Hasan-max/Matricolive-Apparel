@@ -279,7 +279,7 @@ const Footer = () => {
           >
             Powered by{" "}
             <Link
-              href="https://devcalltech.com/"
+              href="https://epciln.com/"
               sx={{
                 color: "rgba(255,255,255,0.7)",
                 textDecoration: "none",
@@ -287,7 +287,7 @@ const Footer = () => {
               }}
               target="_blank"
             >
-              Devcalltech
+              Epciln
             </Link>
           </Typography>
         </Box>
